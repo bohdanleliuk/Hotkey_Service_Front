@@ -1,0 +1,44 @@
+.Hotkey {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: #222222;
+    border-radius: 12px;
+    align-items: center;
+    gap: 20px;
+}
+
+.action {
+    flex: 3;
+    color: white;
+}
+
+.combination_1 {
+    flex: 1;
+    color: #9FFFD1;
+    text-align: center;
+}
+
+.combination_2 {
+    flex: 1;
+    color: #E09FFF;
+    text-align: center;
+}
+
+.line {
+    border-left: 1px solid #505050;
+    align-self: stretch;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FF6A6A;
+    border-radius: 50%;
+}
+.icon2 {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #9FFFD1;
+    border-radius: 50%;
+}
