@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Hotkey from "./hotkey/Hotkey";
 import "./HotkeyList.css"
+import AppContext from "../../AppContext";
 
 function HotkeyList() {
 
+    const {isEditable} = useContext(AppContext);
 
     return (
         <div className="HotkeyList">
@@ -17,6 +19,8 @@ function HotkeyList() {
                 <div className="column-title-item title-os2">
                     Windows
                 </div>
+                {isEditable && <div className="space"></div>}
+                {isEditable && <div className="space"></div>}
             </div>
             <Hotkey/>
             <Hotkey/>

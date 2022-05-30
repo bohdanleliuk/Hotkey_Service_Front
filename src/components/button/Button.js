@@ -25,7 +25,7 @@ function Button(props) {
     }, [])
 
     return(
-        <button className="Button" style={style}>
+        <button className="Button" style={style} onClick={props.click}>
             {text}
         </button>
     )

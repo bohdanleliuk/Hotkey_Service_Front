@@ -1,10 +1,11 @@
 
-import React from "react";
+import React, { useContext } from "react";
 import "./Hotkey.css";
+import AppContext from "../../../AppContext";
 
 function Hotkey() {
 
-    const isEditable = true;
+    const {isEditable} = useContext(AppContext);
 
     return (
         <div className="Hotkey">

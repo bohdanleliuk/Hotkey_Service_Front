@@ -1,12 +1,15 @@
 
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import axios from "axios";
 import Application from "./application/Application";
 import "./NavBar.css";
+import AppContext from "../../AppContext";
 
 function NavBar(props) {
 
     const [applications, setApplications] = useState([]);
+
+    const {isEditable} = useContext(AppContext);
 
 
     useEffect(() => {
@@ -29,7 +32,7 @@ function NavBar(props) {
             <Application name="WebStorm"/>
             <Application name="Idea"/>
             <Application name="Photoshop"/>
-            <div className="button-plus"/>
+            {isEditable && <div className="button-plus"/>}
         </div>
     )
 }
