@@ -1,0 +1,42 @@
+.HotkeyList {
+    /*container*/
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+
+    /*properties*/
+}
+
+.column-titles {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin: 20px 20px 0px 20px;
+}
+
+.column-title-item {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #A3A3A3;
+}
+
+.title-action {
+    flex: 3;
+}
+
+.title-os1 {
+    flex: 1;
+    text-align: center;
+}
+
+.title-os2 {
+    flex: 1;
+    text-align: center;
+}
+
+.space {
+    width: 1px;
+    height: 5px;
+}
