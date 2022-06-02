@@ -1,31 +1,11 @@
 import React, {useEffect, useState} from "react";
 import "./Button.css"
+import {hover} from "@testing-library/user-event/dist/hover";
 
-function Button(props) {
-
-    const [text, setText] = useState(props.text);
-
-    const [type, setType] = useState(props.type);
-
-    const [style, setStyle] = useState({});
-
-    useEffect(() => {
-        if (type === "delete") {
-            setStyle({
-                color: "#FF6A6A",
-                border: "2px solid #FF6A6A"
-            })
-        }
-        if (type === "end") {
-            setStyle({
-                color: "#FFD99F",
-                border: "2px solid #FFD99F"
-            })
-        }
-    }, [])
+function Button({className, text, onClick}) {
 
     return(
-        <button className="Button" style={style} onClick={props.click}>
+        <button className={`Button ${className}`} onClick={onClick}>
             {text}
         </button>
     )

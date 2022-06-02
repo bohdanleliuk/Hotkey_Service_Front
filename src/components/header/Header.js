@@ -12,10 +12,10 @@ function Header() {
         <div className="Header">
             <div className="title">Shortcuts for WebStorm</div>
             <div className="button-container">
-                {isEditable && <Button type="end" text="End editing" click={changeEditable}/>}
-                {isEditable && <Button type="delete" text="Delete App"/>}
+                {isEditable && <Button className="yellow" text="End editing" onClick={changeEditable}/>}
+                {isEditable && <Button className="red" text="Delete App"/>}
                 {isEditable && <Button text="Add shortcut"/>}
-                {!isEditable && <Button text="Edit" click={changeEditable}/>}
+                {!isEditable && <Button text="Edit" onClick={changeEditable}/>}
             </div>
         </div>
     )

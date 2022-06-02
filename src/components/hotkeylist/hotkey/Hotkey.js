@@ -3,21 +3,23 @@ import React, { useContext } from "react";
 import "./Hotkey.css";
 import AppContext from "../../../AppContext";
 
-function Hotkey() {
+function Hotkey(props) {
 
     const {isEditable} = useContext(AppContext);
 
     return (
         <div className="Hotkey">
-            <div className="action">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</div>
+            <div className="action">{props.description}</div>
             <div className="line"></div>
-            <div className="combination_1">CMD+C</div>
+            <div className="combination_1">{props.combination}</div>
             <div className="line"></div>
-            <div className="combination_2">CTRL+C</div>
+            <div className="combination_2">{props.combination2}</div>
             {isEditable && <div className="icon"></div>}
             {isEditable && <div className="icon2"></div>}
         </div>
     )
 }
+
+
 
 export default Hotkey;

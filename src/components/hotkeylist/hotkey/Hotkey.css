@@ -4,8 +4,15 @@
     padding: 20px;
     background-color: #222222;
     border-radius: 12px;
+    border: 2px solid #222222;
     align-items: center;
     gap: 20px;
+    min-height: 24px;
+    transition: 0.3s;
+}
+
+.Hotkey:hover {
+    border: 2px solid white;
 }
 
 .action {
