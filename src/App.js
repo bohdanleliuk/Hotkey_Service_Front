@@ -10,7 +10,7 @@ function App() {
 
     const [applications, setApplications] = useState([]);
 
-    const [hotkeys, setHotkeys] = useState([]);
+    const [hotkeys, setHotkeys] = useState([]);п
 
     useEffect(() => {
         axios.get('http://localhost:8080/app')
