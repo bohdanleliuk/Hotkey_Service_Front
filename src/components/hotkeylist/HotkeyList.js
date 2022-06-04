@@ -12,9 +12,8 @@ function HotkeyList({hotkeys}) {
 
     const listTransformHotkeys = transformHotkeys(hotkeys, listOses);
 
-
     const listHotkeys = listTransformHotkeys.map((hotkey) =>
-        <Hotkey id={hotkey.id} description={hotkey.description} combination={hotkey.combination} combination2={hotkey.combination2}/>
+        <Hotkey key={hotkey.id} id={hotkey.id} description={hotkey.description} combination={hotkey.combination} combination2={hotkey.combination2}/>
     )
 
     return (
@@ -34,34 +33,34 @@ function HotkeyList({hotkeys}) {
 function getListOses(hotkeys) {
     let list = [];
 
-    hotkeys.forEach((h) => {
-        if (!list.includes(h.os.name))
-           list.push(h.os.name);
+    hotkeys.forEach((hotkey) => {
+        if (!list.includes(hotkey.os.name))
+           list.push(hotkey.os.name);
     })
     return list;
 }
 
 function transformHotkeys(hotkeys, listOses) {
-    let result = [];
+    const result = [];
 
     if (listOses.length === 1) {
         return hotkeys;
     }
 
-    hotkeys.forEach((h) => {
-        if (h.os.name === listOses[0]) {
+    hotkeys.forEach((hotkey) => {
+        if (hotkey.os.name === listOses[0]) {
             result.push({
-                description: h.description,
-                combination: h.combination
+                description: hotkey.description,
+                combination: hotkey.combination
             })
         }
     })
 
-    hotkeys.forEach((h) => {
-        if (h.os.name === listOses[1]) {
+    hotkeys.forEach((hotkey) => {
+        if (hotkey.os.name === listOses[1]) {
             for (let i = 0; i < result.length; i++) {
-                if (h.description === result[i].description) {
-                    result[i].combination2 = h.combination;
+                if (hotkey.description === result[i].description) {
+                    result[i].combination2 = hotkey.combination;
                 }
             }
         }

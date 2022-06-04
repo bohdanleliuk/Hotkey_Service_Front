@@ -1,19 +1,19 @@
 
-import React, {useEffect, useState} from "react";
-import "./Application.css"
+import React from "react";
+import "./Application.css";
 
-function Application(props) {
+function Application({app, changeApp, img}) {
 
 
     return (
-        <div>
+        <div onClick={() => changeApp(app)}>
         <div className="Application">
             <div className="point"/>
             <div className="app-icon">
-                <img src={props.img} className="img"/>
+                <img src={img} className="img"/>
             </div>
         </div>
-            <div className="app-title">{props.name}</div>
+            <div className="app-title">{app.name}</div>
         </div>
     )
 }

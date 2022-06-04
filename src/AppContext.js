@@ -6,7 +6,6 @@ export function AppProvider({children}) {
 
     const [isEditable, setEditable] = useState(false);
 
-
     const changeEditable = () => {
         if (isEditable === false) {
             setEditable(true);

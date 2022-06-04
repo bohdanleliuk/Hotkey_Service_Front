@@ -4,13 +4,13 @@ import AppContext from "../../AppContext";
 import "./Header.css";
 
 
-function Header() {
+function Header({currentApp}) {
 
     const {isEditable, changeEditable} = useContext(AppContext);
 
     return (
         <div className="Header">
-            <div className="title">Shortcuts for WebStorm</div>
+            <div className="title">{`Shortcuts for ${currentApp && currentApp.name}`}</div>
             <div className="button-container">
                 {isEditable && <Button className="yellow" text="End editing" onClick={changeEditable}/>}
                 {isEditable && <Button className="red" text="Delete App"/>}
