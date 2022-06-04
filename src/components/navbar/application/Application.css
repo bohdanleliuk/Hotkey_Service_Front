@@ -11,6 +11,14 @@
     background-color: #9FFFD1;
 }
 
+.on {
+    background-color: #9FFFD1;
+}
+
+.off {
+    background-color: #565656;
+}
+
 .img{
     height: 60px;
     width: 60px;

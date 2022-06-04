@@ -5,12 +5,12 @@ import Application from "./application/Application";
 import "./NavBar.css";
 import AppContext from "../../AppContext";
 
-function NavBar({applications, changeApp}) {
+function NavBar({applications, changeApp, currentApp}) {
 
     const {isEditable} = useContext(AppContext);
 
     const listApplications = applications.map((app) =>
-        <Application key={app.id} app={app} changeApp={changeApp} img="https://icon-library.com/images/icon-for-iphone-app/icon-for-iphone-app-10.jpg"/>
+        <Application key={app.id} app={app} changeApp={changeApp} currentApp={currentApp} img="https://icon-library.com/images/icon-for-iphone-app/icon-for-iphone-app-10.jpg"/>
     )
 
     return (

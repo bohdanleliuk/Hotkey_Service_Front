@@ -56,7 +56,7 @@ function App() {
 
         <div className="App">
             <AppProvider>
-            <NavBar applications={applications} changeApp={changeApp}/>
+            <NavBar applications={applications} changeApp={changeApp} currentApp={currentApp}/>
             <div className="space-left"/>
             <div className="main">
                 <Header currentApp={currentApp}/>
