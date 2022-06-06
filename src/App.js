@@ -19,6 +19,8 @@ function App() {
 
     const [app, setApp] = useState({});
 
+    const [gg, setGg] = useState("");
+
 
     const getApplicationData = async () => {
         try {
@@ -27,6 +29,8 @@ function App() {
             console.log(err.toString())
         }
     }
+
+
 
     const getHotkeyData = async () => {
         try {
