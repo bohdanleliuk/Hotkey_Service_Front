@@ -1,16 +1,18 @@
 
 import React, {useEffect, useState, useContext} from "react";
-import axios from "axios";
 import Application from "./application/Application";
 import "./NavBar.css";
 import AppContext from "../../AppContext";
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 function NavBar({applications, changeApp, currentApp}) {
 
     const {isEditable} = useContext(AppContext);
 
     const listApplications = applications.map((app) =>
+        <Link to={`${app.name.toLowerCase().replace(' ','')}`}>
         <Application key={app.id} app={app} changeApp={changeApp} currentApp={currentApp} img="https://icon-library.com/images/icon-for-iphone-app/icon-for-iphone-app-10.jpg"/>
+        </Link>
     )
 
     return (
@@ -20,7 +22,12 @@ function NavBar({applications, changeApp, currentApp}) {
                 <path d="M5.85938 39V30.0938H5.95312L12.5273 39H16.3359V22.0898H11.6484V30.8555H11.5547L5.02734 22.0898H1.17188V39H5.85938ZM24.8789 39.3281C29.1094 39.3281 31.6875 36.9023 31.6875 32.5195C31.6875 28.2422 29.0508 25.7344 24.8789 25.7344C20.7305 25.7344 18.082 28.2656 18.082 32.5195C18.082 36.8906 20.6602 39.3281 24.8789 39.3281ZM24.8789 35.8945C23.6719 35.8945 22.957 34.6992 22.957 32.5312C22.957 30.4219 23.707 29.168 24.8789 29.168C26.0625 29.168 26.8125 30.4219 26.8125 32.5312C26.8125 34.6992 26.0742 35.8945 24.8789 35.8945ZM34.3359 23.2266V26.0625H32.625V29.543H34.3359V35.3906C34.3359 37.9453 35.7773 39 39.4336 39C40.3477 39 40.957 38.918 41.4141 38.8242V35.4961C41.1328 35.543 40.957 35.5547 40.5938 35.5547C39.6094 35.5547 39.1406 35.1328 39.1406 34.3242V29.543H41.4141V26.0625H39.1406V23.2266H34.3359ZM51.5391 34.8047C51.2578 35.5781 50.4727 36.0352 49.5 36.0352C48.2109 36.0352 47.2969 35.1211 47.2969 33.8555V33.5508H55.875V32.25C55.875 28.2891 53.2852 25.7344 49.2773 25.7344C45.2109 25.7344 42.668 28.3711 42.668 32.6016C42.668 36.8086 45.1875 39.3281 49.4297 39.3281C52.9805 39.3281 55.418 37.5938 55.8164 34.8047H51.5391ZM49.3828 29.0391C50.5078 29.0391 51.3164 29.7891 51.3984 30.9492H47.3672C47.4609 29.8359 48.293 29.0391 49.3828 29.0391Z" fill="#78FFCE"/>
             </svg>
             {listApplications}
-            {isEditable && <div className="button-plus"/>}
+            {isEditable && <div className="button-plus">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.071 9H1.92889" stroke="#9FFFD1" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M9 16.0712L9 1.92901" stroke="#9FFFD1" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>}
         </div>
     )
 }

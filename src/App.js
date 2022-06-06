@@ -5,6 +5,7 @@ import "./App.css"
 import Header from "./components/header/Header";
 import {AppProvider} from "./AppContext";
 import axios from "axios";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 function App() {
 
@@ -15,6 +16,9 @@ function App() {
     const [hotkeys, setHotkeys] = useState([]);
 
     const [currentApp, setCurrentApp] = useState({});
+
+    const [app, setApp] = useState({});
+
 
     const getApplicationData = async () => {
         try {
@@ -43,6 +47,7 @@ function App() {
         (async () => {
             const hotkeyData = await getHotkeyData();
             setHotkeys(hotkeyData.data.hotkeys);
+            setApp(currentApp.name.toLowerCase().replace(' ',''));
         })()
     },[currentApp])
 
@@ -53,19 +58,20 @@ function App() {
     const changeApp = (app) => setCurrentApp(app);
 
     return (
-
+        <Router>
         <div className="App">
             <AppProvider>
             <NavBar applications={applications} changeApp={changeApp} currentApp={currentApp}/>
             <div className="space-left"/>
             <div className="main">
-                <Header currentApp={currentApp}/>
-                <HotkeyList hotkeys={hotkeys}/>
+                <Routes>
+                    <Route path={`${app}`} element={<HotkeyList hotkeys={hotkeys}/>}/>
+                </Routes>
             </div>
             <div className="space-right"/>
             </AppProvider>
         </div>
-
+        </Router>
     )
 }
 

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Hotkey from "./hotkey/Hotkey";
 import "./HotkeyList.css"
 import AppContext from "../../AppContext";
-import Application from "../navbar/application/Application";
+import Header from "../header/Header";
 
 function HotkeyList({hotkeys}) {
 
@@ -13,11 +13,12 @@ function HotkeyList({hotkeys}) {
     const listTransformHotkeys = transformHotkeys(hotkeys, listOses);
 
     const listHotkeys = listTransformHotkeys.map((hotkey) =>
-        <Hotkey key={hotkey.id} id={hotkey.id} description={hotkey.description} combination={hotkey.combination} combination2={hotkey.combination2}/>
+        <Hotkey key={hotkey.id} description={hotkey.description} combination={hotkey.combination} combination2={hotkey.combination2}/>
     )
 
     return (
         <div className="HotkeyList">
+            <Header/>
             <div className="column-titles">
                 <div className="column-title-item title-action">Action</div>
                 <div className="column-title-item title-os1">{listOses[0]}</div>

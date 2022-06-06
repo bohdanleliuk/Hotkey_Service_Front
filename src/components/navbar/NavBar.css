@@ -18,8 +18,16 @@
 }
 
 .button-plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     border: 2px solid #9FFFD1;
+    transition: 0.3s;
+}
+
+.button-plus:hover {
+    transform: scale(120%);
 }

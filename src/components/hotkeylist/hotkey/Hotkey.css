@@ -37,15 +37,34 @@
     align-self: stretch;
 }
 
-.icon {
+.icon-border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
+    border: 2px solid rgb(0,0,0,0);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.icon-border:hover {
     border: 2px solid #FF6A6A;
     border-radius: 50%;
 }
-.icon2 {
+
+.icon2-border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
+    border: 2px solid rgb(0,0,0,0);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.icon2-border:hover {
     border: 2px solid #9FFFD1;
     border-radius: 50%;
 }
