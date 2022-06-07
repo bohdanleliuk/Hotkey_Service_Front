@@ -1,27 +1,30 @@
 
 import React, {useEffect, useState} from "react";
 import "./Application.css";
+import {useParams} from "react-router-dom";
 
-function Application({app, changeApp, currentApp, img}) {
+function Application({app, img, active}) {
 
     const [pointClass, setPointClass] = useState("off");
 
+    const {id} = useParams();
+
     useEffect(() => {
-        if (currentApp && currentApp.id === app.id) {
+        if (active) {
             setPointClass("on")
         } else {
             setPointClass("off")
         }
-    },[currentApp])
+    },[id])
 
     return (
-        <div onClick={() => changeApp(app)}>
-        <div className="Application">
-            <div className={`point ${pointClass}`}/>
-            <div className="app-icon">
-                <img src={img} className="img"/>
+        <div>
+            <div className="Application">
+                <div className={`point ${pointClass}`}/>
+                <div className="app-icon">
+                    <img src={img} className="img"/>
+                </div>
             </div>
-        </div>
             <div className="app-title">{app.name}</div>
         </div>
     )

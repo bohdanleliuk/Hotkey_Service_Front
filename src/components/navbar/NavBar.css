@@ -31,3 +31,7 @@
 .button-plus:hover {
     transform: scale(120%);
 }
+
+.link-active .point {
+    background-color: #9FFFD1;
+}

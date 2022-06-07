@@ -1,0 +1,17 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    font-size: 32px;
+    color: white;
+    margin: 20px;
+}
+
+.description {
+    font-size: 18px;
+    color: white;
+    margin: 20px;
+}

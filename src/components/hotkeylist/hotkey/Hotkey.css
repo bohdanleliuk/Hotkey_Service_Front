@@ -37,7 +37,7 @@
     align-self: stretch;
 }
 
-.icon-border {
+.icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,12 +48,11 @@
     transition: 0.3s;
 }
 
-.icon-border:hover {
+.icon:hover {
     border: 2px solid #FF6A6A;
-    border-radius: 50%;
 }
 
-.icon2-border {
+.icon2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +63,6 @@
     transition: 0.3s;
 }
 
-.icon2-border:hover {
+.icon2:hover {
     border: 2px solid #9FFFD1;
-    border-radius: 50%;
 }
