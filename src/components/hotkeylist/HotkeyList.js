@@ -20,8 +20,14 @@ function HotkeyList() {
 
     const {id} = useParams();
 
-    const [appName, setAppName] = useState([]);
+    const {deletedHotkey} = useContext(AppContext);
 
+    const {deletedApp} = useContext(AppContext);
+
+    const [app, setApp] = useState({
+        id: "",
+        name: ""
+    });
 
     const getHotkeyData = async () => {
         try {
@@ -35,21 +41,24 @@ function HotkeyList() {
         (async () => {
             const hotkeyData = await getHotkeyData();
             setHotkeys(hotkeyData.data.hotkeys);
-            setAppName(hotkeyData.data.name)
+            setApp({
+                id: hotkeyData.data.id,
+                name: hotkeyData.data.name
+            });
         })()
-    },[id])
+    },[id, deletedHotkey, deletedApp])
 
 
     const listHotkeys = listTransformHotkeys.map((hotkey) =>
-        <Hotkey key={hotkey.id} id={hotkey.id} description={hotkey.description} combination={hotkey.combination} combination2={hotkey.combination2}/>
+        <Hotkey key={hotkey.id} id={hotkey.id} id2={hotkey.id2} description={hotkey.description} combination={hotkey.combination} combination2={hotkey.combination2}/>
     )
 
     return (
         <div className="HotkeyList">
-            <Header appName={appName}/>
+            {hotkeys.length !== 0 && <Header app={app}/>}
             <div className="column-titles">
-                <div className="column-title-item title-action">Action</div>
-                <div className="column-title-item title-os1">{listOses[0]}</div>
+                {hotkeys.length !== 0 && <div className="column-title-item title-action">Action</div>}
+                {hotkeys.length !== 0 && <div className="column-title-item title-os1">{listOses[0]}</div>}
                 {listOses[1] != null && <div className="column-title-item title-os2">{listOses[1]}</div>}
                 {isEditable && <div className="space"></div>}
                 {isEditable && <div className="space"></div>}
@@ -79,6 +88,7 @@ function transformHotkeys(hotkeys, listOses) {
     hotkeys.forEach((hotkey) => {
         if (hotkey.os.name === listOses[0]) {
             result.push({
+                id: hotkey.id,
                 description: hotkey.description,
                 combination: hotkey.combination
             })
@@ -90,6 +100,7 @@ function transformHotkeys(hotkeys, listOses) {
             for (let i = 0; i < result.length; i++) {
                 if (hotkey.description === result[i].description) {
                     result[i].combination2 = hotkey.combination;
+                    result[i].id2 = hotkey.id;
                 }
             }
         }

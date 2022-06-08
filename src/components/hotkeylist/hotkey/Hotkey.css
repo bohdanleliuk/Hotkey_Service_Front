@@ -37,7 +37,7 @@
     align-self: stretch;
 }
 
-.icon {
+.icon_delete {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,11 +48,11 @@
     transition: 0.3s;
 }
 
-.icon:hover {
+.icon_delete:hover {
     border: 2px solid #FF6A6A;
 }
 
-.icon2 {
+.icon_update {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,6 +63,6 @@
     transition: 0.3s;
 }
 
-.icon2:hover {
+.icon_update:hover {
     border: 2px solid #9FFFD1;
 }

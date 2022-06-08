@@ -6,15 +6,24 @@ export function AppProvider({children}) {
 
     const [isEditable, setEditable] = useState(false);
 
+    const [deletedApp, setDeletedApp] = useState(false);
+
+    const [deletedHotkey, setDeletedHotkey] = useState(false);
+
     const changeEditable = () => {
-        if (isEditable === false) {
-            setEditable(true);
-        } else {
-            setEditable(false);
-        }
+        setEditable(!isEditable);
     }
+
+    const changeDeletedApp = () => {
+        setDeletedApp(!deletedApp);
+    }
+
+    const changeDeletedHotkey = () => {
+        setDeletedHotkey(!deletedHotkey);
+    }
+
     return (
-        <AppContext.Provider value={{isEditable, changeEditable}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{isEditable, changeEditable, deletedApp, changeDeletedApp, deletedHotkey, changeDeletedHotkey}}>{children}</AppContext.Provider>
     )
 }
 

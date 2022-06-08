@@ -10,31 +10,11 @@ import NotFound from "./components/notfound/NotFound";
 
 function App() {
 
-    const PATH = "http://localhost:8080/";
-
-    const [applications, setApplications] = useState([]);
-
-
-    const getApplicationData = async () => {
-        try {
-            return await axios.get(`${PATH}app`);
-        } catch (err) {
-            console.log(err.toString())
-        }
-    }
-
-    useEffect( () => {
-        (async () => {
-            const applicationData = await getApplicationData();
-            setApplications(applicationData.data);
-        })()
-    },[])
-
     return (
         <Router>
         <div className="App">
             <AppProvider>
-            <NavBar applications={applications}/>
+            <NavBar/>
             <div className="space-left"/>
             <div className="main">
                 <Routes>

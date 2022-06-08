@@ -35,3 +35,13 @@
 .link-active .point {
     background-color: #9FFFD1;
 }
+
+.label {
+    font-size: 16px;
+    color: white;
+}
+
+.checkbox_title {
+    font-size: 16px;
+    color: white;
+}

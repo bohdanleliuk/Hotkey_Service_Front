@@ -4,10 +4,92 @@ import Application from "./application/Application";
 import "./NavBar.css";
 import AppContext from "../../AppContext";
 import {Link, NavLink} from "react-router-dom";
+import Modal from "../modal/Modal";
+import axios from "axios";
+import Button from "../button/Button";
 
-function NavBar({applications}) {
+function NavBar() {
 
-    const {isEditable} = useContext(AppContext);
+    const PATH = "http://localhost:8080/";
+
+    const [activeForm, setActiveForm] = useState(false);
+
+    const [newAppName, setNewAppName] = useState('');
+
+    const [url, setUrl] = useState('');
+
+    const [os1, setOs1] = useState({});
+
+    const [os1Name, setOs1Name] = useState('none');
+
+    const [os2, setOs2] = useState({});
+
+    const [checkedOs2, setCheckedOs2] = useState(false);
+
+    const [checkedHotkeyFirst, setCheckedHotkeyFirst] = useState(false);
+
+    const [applications, setApplications] = useState([]);
+
+    const [oses, setOses] = useState([]);
+
+    const {deletedApp} = useContext(AppContext);
+
+    const resetFormData = () => {
+        setNewAppName('');
+        setUrl('');
+        setOs1({});
+        setOs1Name('none');
+        setOs2({});
+        setCheckedOs2(false);
+        setCheckedHotkeyFirst(false);
+    }
+
+    const getApplicationData = async () => {
+        try {
+            return await axios.get(`${PATH}app`);
+        } catch (err) {
+            console.log(err.toString())
+        }
+    }
+
+    useEffect( () => {
+        (async () => {
+            const applicationData = await getApplicationData();
+            setApplications(applicationData.data);
+        })()
+    },[deletedApp])
+
+    const getOsData = async () => {
+        try {
+            return await axios.get(`${PATH}os`);
+        } catch (err) {
+            console.log(err.toString())
+        }
+    }
+
+    useEffect( () => {
+        (async () => {
+            const osData = await getOsData();
+            setOses(osData.data);
+        })()
+    },[])
+
+    const changeOs = (osName) => {
+        setOs1Name(osName);
+        oses.forEach((os) => {
+            if (os.name === osName) {
+                setOs1(os);
+            } else {
+                setOs2(os);
+            }
+        })
+    }
+
+    const parseHotkeys = () => {
+        axios.post(`${PATH}app`, {
+            name: newAppName
+        }).then()
+    }
 
     const listApplications = applications.map((app) =>
         <NavLink to={`/app/${app.id}/hotkeys`} className={({ isActive }) => (isActive ? "link-active" : "link")}>
@@ -24,13 +106,36 @@ function NavBar({applications}) {
             </svg>
             </Link>
             {listApplications}
-            {isEditable && <div className="button-plus">
+            <div className="button-plus" onClick={() => setActiveForm(true)}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.071 9H1.92889" stroke="#9FFFD1" stroke-width="3" stroke-linecap="round"/>
                     <path d="M9 16.0712L9 1.92901" stroke="#9FFFD1" stroke-width="3" stroke-linecap="round"/>
                 </svg>
+            </div>
 
-            </div>}
+            <Modal active={activeForm} setActive={setActiveForm} reset={resetFormData} title="Add app">
+                <label className="label">Name for new application</label>
+                <input title="new application name" value={newAppName} onChange={(e) => setNewAppName(e.target.value)}/>
+                <label className="label">Fill url to parse</label>
+                <input title="URL" value={url} onChange={(e) => setUrl(e.target.value)}/>
+                <label className="label">Select first OS</label>
+                <select value={os1Name} onChange={(e) => {e.target.value !== 'none' && changeOs(e.target.value)}}>
+                    <option value='none'>Select first OS</option>
+                    {oses.map((os) => (
+                        <option value={os.name}>{os.name}</option>
+                    ))}
+                </select>
+                {os1Name !== 'none' && <p className="checkbox_title">
+                    <input type="checkbox" checked={checkedOs2} onChange={() => setCheckedOs2(!checkedOs2)}/>
+                    Select second OS {os2.name}
+                </p>}
+                <p className="checkbox_title">
+                    <input type="checkbox" checked={checkedHotkeyFirst} onChange={() => setCheckedHotkeyFirst(!checkedHotkeyFirst)}/>
+                    Set fields order: Combinations -> Action (default: Action -> Combination)
+                </p>}
+                <Button text="Add app" onClick={parseHotkeys}/>
+
+            </Modal>
         </div>
     )
 }
