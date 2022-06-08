@@ -1,0 +1,47 @@
+.NavBar {
+    position: fixed;
+    display: flex;
+    width: 160px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background: #1A1A1A;
+    margin: 40px;
+    height: calc(100vh - 80px);
+    border-radius: 20px;
+    gap: 30px;
+}
+
+.logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #9FFFD1;
+    transition: 0.3s;
+}
+
+.button-plus:hover {
+    transform: scale(120%);
+}
+
+.link-active .point {
+    background-color: #9FFFD1;
+}
+
+.label {
+    font-size: 16px;
+    color: white;
+}
+
+.checkbox_title {
+    font-size: 16px;
+    color: white;
+}
